@@ -1,12 +1,11 @@
 # Logistic Regression
 
-Logistic regression fits x into a sigmoid function and classify them as 0 if the output is < 0.5 and 1 otherwise.
+Logistic regression fits x into a sigmoid function and classify them as 0 if the output is (e.g < 0.5) and 1 otherwise.
 
 ## Sigmoid Function
 This function maps any real value into another value between 0 and 1.  
 ![equation](https://latex.codecogs.com/gif.latex?h%28z%29%20%3D%20%5Cfrac%7B1%7D%7B1&plus;%5Cexp%5E%7B-z%7D%7D)  
-where  
-![equation](https://latex.codecogs.com/gif.latex?z%20%3D%20%5Ctheta_0%20x_0%20&plus;%20%5Ctheta_1%20x_1%20&plus;%20%5Ctheta_2%20x_2%20&plus;%20...%20%5Ctheta_N%20x_N)  
+where ![equation](https://latex.codecogs.com/gif.latex?z%20%3D%20%5Ctheta_0%20x_0%20&plus;%20%5Ctheta_1%20x_1%20&plus;%20%5Ctheta_2%20x_2%20&plus;%20...%20%5Ctheta_N%20x_N)  
 
 In order to train the weights (thetas) in the sigmoid function, we need to minimize a cost function.
 
@@ -25,4 +24,15 @@ where the gradient of the our cost function is
 
 In a matrix format:  
 ![equation](https://latex.codecogs.com/gif.latex?%5Ctheta%20%3D%20%5Ctheta%20-%20%5Cfrac%7B%5Calpha%7D%7Bm%7D%20%5Ctimes%20%28x%5E%7BT%7D%20%5Ccdot%20%28h-y%29%29)
+
+## Assumptions
+1) Observations are independent (check by plotting of residuals against time/index)
+2) No multicollinearity among explanatory variables (check by using VIF)
+3) There is a linear relationship between explanatory variables and the logit of the response variable (check by using Box-Tidwell test)
+
+## Note
+Unlike linear regression, logistic regression does not require:  
+1) Linear relationship between the explanatory variables and the response variable
+2) The residuals to be normally distributed
+3) Constant variance in residual
 
