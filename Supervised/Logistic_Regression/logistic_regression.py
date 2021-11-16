@@ -1,3 +1,4 @@
+import math
 import numpy as np
 
 class LogisticRegression:
@@ -8,40 +9,21 @@ class LogisticRegression:
         return 1 / (1 + np.exp(-x))
     
     def fit(self, X, y, learning_rate = 0.01, num_iter = 5000):
-        
-
-
-
-
-    def __init__(self, learning_rate=.1, gradient_descent=True):
-        self.param = None
-        self.learning_rate = learning_rate
-        self.gradient_descent = gradient_descent
-        self.sigmoid = Sigmoid()
-
-    def _initialize_parameters(self, X):
         n_features = np.shape(X)[1]
-        # Initialize parameters between [-1/sqrt(N), 1/sqrt(N)]
-        limit = 1 / math.sqrt(n_features)
-        self.param = np.random.uniform(-limit, limit, (n_features,))
 
-    def fit(self, X, y, n_iterations=4000):
-        self._initialize_parameters(X)
-        # Tune parameters for n iterations
-        for i in range(n_iterations):
-            # Make a new prediction
-            y_pred = self.sigmoid(X.dot(self.param))
-            if self.gradient_descent:
-                # Move against the gradient of the loss function with
-                # respect to the parameters to minimize the loss
-                self.param -= self.learning_rate * -(y - y_pred).dot(X)
-            else:
-                # Make a diagonal matrix of the sigmoid gradient column vector
-                diag_gradient = make_diagonal(self.sigmoid.gradient(X.dot(self.param)))
-                # Batch opt:
-                self.param = np.linalg.pinv(X.T.dot(diag_gradient).dot(X)).dot(X.T).dot(diag_gradient.dot(X).dot(self.param) + y - y_pred)
+        # 1) Create random initial thetas of size (n_features, 1)
+        temp = 1/math.sqrt(n_features)
+        self.thetas = np.random.uniform(-temp, temp, (n_features,))
 
-    def predict(self, X):
-        y_pred = np.round(self.sigmoid(X.dot(self.param))).astype(int)
-        return y_pred        
+        # 2) Tune the theta for num_iter times
+        for i in range(num_iter):
+            # 2.1) Make new prediction
+            y_pred = self.sigmoid(X.dot(self.thetas))
+            # 2.2) Update thetas
+            self.thetas -= learning_rate * -(y - y_pred).dot(X)
 
+    def predict(self, X, prob=False):
+        y_pred = self.sigmoid(X.dot(self.thetas))
+        if prob:
+            return y_pred
+        return np.round(y_pred).astype(int)
