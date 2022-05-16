@@ -2,6 +2,11 @@ import math
 import numpy as np
 
 class LogisticRegression:
+    """
+    Parameters:
+    -----------
+    
+    """
     def __init__(self):
         pass
         
