@@ -1,5 +1,8 @@
 # Machine Learning From Scratch
 
+## Utils
+- Data manipulation
+
 ## Algorithms
 ### Supervised Learning
 - Logistic Regression
