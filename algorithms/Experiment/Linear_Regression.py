@@ -3,8 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_regression
 
-#from Utils.data_manipulation import train_test_split
-from algorithms.Supervised import regression
+from algorithms.Utils import train_test_split
+from algorithms.Supervised import LinearRegression
 
 def main():
     

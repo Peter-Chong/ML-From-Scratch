@@ -1,0 +1,12 @@
+README.md
+setup.py
+PeterMLFromScratch.egg-info/PKG-INFO
+PeterMLFromScratch.egg-info/SOURCES.txt
+PeterMLFromScratch.egg-info/dependency_links.txt
+PeterMLFromScratch.egg-info/top_level.txt
+algorithms/__init__.py
+algorithms/Supervised/__init__.py
+algorithms/Supervised/regression.py
+algorithms/Supervised/Regression/__init__.py
+algorithms/Utils/__init__.py
+algorithms/Utils/data_manipulation.py
